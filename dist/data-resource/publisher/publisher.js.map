@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/data-resource/publisher/publisher.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO;IACZ,IAAI,CAAC,aAAa,CAAC,IAAI,CAAC,IAAI,CAAC,IAAI,CAAC,KAAK,EAAE,CAAC,CAAC;AAC7C,CAAC","file":"publisher.js","sourceRoot":"","sourcesContent":["export default function() {\n  this.dataPublisher.next(this.data.slice());  \n}\n"]}

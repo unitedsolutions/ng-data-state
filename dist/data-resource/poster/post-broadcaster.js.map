@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/data-resource/poster/post-broadcaster.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO;IACZ,MAAM,CAAC,IAAI,CAAC,YAAY,CAAC,YAAY,EAAE,CAAC;AAC1C,CAAC","file":"post-broadcaster.js","sourceRoot":"","sourcesContent":["export default function() {\n  return this.addPublisher.asObservable();  \n}\n"]}

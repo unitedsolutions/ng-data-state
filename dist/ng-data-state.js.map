@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/ng-data-state.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,eAAe,EAAC,MAAM,wBAAwB,CAAC;AACvD,OAAO,EAAC,SAAS,EAAC,MAAY,yBAAyB,CAAC","file":"ng-data-state.js","sourceRoot":"","sourcesContent":["export {DataStateModule} from './ng-data-state.module';\nexport {DataState}       from './ng-data-state.service';\n"]}

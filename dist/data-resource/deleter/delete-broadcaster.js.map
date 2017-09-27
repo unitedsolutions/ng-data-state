@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/data-resource/deleter/delete-broadcaster.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO;IACZ,MAAM,CAAC,IAAI,CAAC,eAAe,CAAC,YAAY,EAAE,CAAC;AAC7C,CAAC","file":"delete-broadcaster.js","sourceRoot":"","sourcesContent":["export default function() {\n  return this.deletePublisher.asObservable();\n}\n"]}

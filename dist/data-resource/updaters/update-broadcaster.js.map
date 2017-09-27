@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/data-resource/updaters/update-broadcaster.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO;IACZ,MAAM,CAAC,IAAI,CAAC,eAAe,CAAC,YAAY,EAAE,CAAC;AAC7C,CAAC","file":"update-broadcaster.js","sourceRoot":"","sourcesContent":["export default function() {\n  return this.updatePublisher.asObservable();  \n}\n"]}
