@@ -1,5 +1,4 @@
 import * as _                     from 'lodash';
-import * as io                    from 'socket.io-client';
 import {BehaviorSubject, Subject} from 'rxjs';
 import ioInitializer              from './io-initializer/io-initializer';
 
