@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import { BehaviorSubject, Subject } from 'rxjs';
 import ioInitializer from './io-initializer/io-initializer';
-var default_1 = (function () {
+var default_1 = /** @class */ (function () {
     function default_1(configs) {
         this.data = [];
         this.dataPublisher = new BehaviorSubject([]);

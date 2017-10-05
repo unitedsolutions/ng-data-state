@@ -1,10 +1,13 @@
+import urlProcessor from '../../_lib/url-processor';
 import updater from './update-processor/update-processor';
 import reverter from './update-reverter/update-reverter';
 export default function (method) {
-    return function (data, options) {
+    return function (params) {
         var _this = this;
+        var data = params.data, url = params.url;
         var originalRecord = updater.call(this, data);
-        var promise = this.http[method](this.url, data, options).toPromise();
+        url = urlProcessor.call(this, url);
+        var promise = this.http[method](url, data).toPromise();
         promise.catch(function () { return reverter.call(_this, originalRecord); });
         return promise;
     };

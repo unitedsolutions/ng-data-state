@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import { HttpClientPlus } from 'ng-http-client-plus';
 import { DataResource } from './data-resource/data-resource';
-var DataState = (function () {
+var DataState = /** @class */ (function () {
     function DataState(http) {
         this.http = http;
         this.dataResources = {};

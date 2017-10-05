@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { DataState } from './ng-data-state.service';
 import { HttpClientPlusModule } from 'ng-http-client-plus';
-var DataStateModule = (function () {
+var DataStateModule = /** @class */ (function () {
     function DataStateModule() {
     }
     DataStateModule.decorators = [

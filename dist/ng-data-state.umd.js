@@ -52,7 +52,7 @@ var ioInitializer = function () {
     socket.on('patch', _updateSyncer);
 };
 
-var default_1 = (function () {
+var default_1 = /** @class */ (function () {
     function default_1(configs) {
         this.data = [];
         this.dataPublisher = new rxjs.BehaviorSubject([]);
@@ -70,12 +70,26 @@ var default_1 = (function () {
     return default_1;
 }());
 
-var post = function (data, options) {
+var urlProcessor = function (url) {
+    if (url) {
+        if (!url.startsWith('/')) {
+            url = this.url + '/' + url;
+        }
+    }
+    else {
+        url = this.url;
+    }
+    return url;
+};
+
+var post = function (params) {
     var _this = this;
-    this.pendingPostData = data;
+    var data = params.data, url = params.url;
     var index = this.data.push(data) - 1;
+    url = urlProcessor.call(this, url);
+    this.pendingPostData = data;
     this.publish();
-    var promise = this.http.post(this.url, data, options).toPromise();
+    var promise = this.http.post(this.url, data).toPromise();
     promise.catch(function () {
         _this.data.splice(index, 1);
         _this.publish();
@@ -87,14 +101,16 @@ var onAdd = function () {
     return this.addPublisher.asObservable();
 };
 
-var deleteProcessor = function (options) {
+var deleteProcessor = function (params) {
     var _this = this;
-    var _id = options.params._id;
+    var url = params.url, data = params.data;
+    var _id = data._id;
     var index = _.findIndex(this.data, { _id: _id });
     var record = this.data.splice(index, 1)[0];
+    url = urlProcessor.call(this, url);
     this.pendingDeleteId = _id;
     this.publish();
-    var promise = this.http.delete(this.url, options).toPromise();
+    var promise = this.http.delete(url, { params: data }).toPromise();
     promise.catch(function () {
         _this.data.splice(index, 0, record);
         _this.publish();
@@ -124,10 +140,12 @@ var reverter = function (record) {
 };
 
 var updaterGenerator = function (method) {
-    return function (data, options) {
+    return function (params) {
         var _this = this;
+        var data = params.data, url = params.url;
         var originalRecord = updater.call(this, data);
-        var promise = this.http[method](this.url, data, options).toPromise();
+        url = urlProcessor.call(this, url);
+        var promise = this.http[method](url, data).toPromise();
         promise.catch(function () { return reverter.call(_this, originalRecord); });
         return promise;
     };
@@ -174,7 +192,7 @@ _.extend(default_1.prototype, __assign({ post: post }, updaters, { delete: delet
     onDelete: onDelete,
     onAdd: onAdd }));
 
-var DataState = (function () {
+var DataState = /** @class */ (function () {
     function DataState(http) {
         this.http = http;
         this.dataResources = {};
@@ -204,7 +222,7 @@ var DataState = (function () {
     return DataState;
 }());
 
-var DataStateModule = (function () {
+var DataStateModule = /** @class */ (function () {
     function DataStateModule() {
     }
     DataStateModule.decorators = [

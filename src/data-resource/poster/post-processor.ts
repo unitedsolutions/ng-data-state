@@ -1,10 +1,13 @@
-import * as _ from 'lodash';
+import * as _       from 'lodash';
+import urlProcessor from '../_lib/url-processor';
 
-export default function(data, options) {
-  this.pendingPostData = data;
+export default function(params) {
+  let {data, url} = params;
   let index = this.data.push(data) - 1;
+  url = urlProcessor.call(this, url);
+  this.pendingPostData = data;
   this.publish();
-  let promise = this.http.post(this.url, data, options).toPromise();
+  let promise = this.http.post(this.url, data).toPromise();
   
   promise.catch(() => {
     this.data.splice(index, 1);
