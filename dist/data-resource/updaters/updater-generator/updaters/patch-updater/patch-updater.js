@@ -8,4 +8,4 @@ export default function (data) {
     this.publish();
     return clonedRecord;
 }
-//# sourceMappingURL=update-processor.js.map
+//# sourceMappingURL=patch-updater.js.map

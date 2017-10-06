@@ -122,7 +122,7 @@ var onDelete = function () {
     return this.deletePublisher.asObservable();
 };
 
-var updater = function (data) {
+var patch = function (data) {
     var _id = data._id;
     var record = _.find(this.data, { _id: _id });
     var clonedRecord = _.cloneDeep(record);
@@ -130,6 +130,21 @@ var updater = function (data) {
     this.pendingUpdateId = _id;
     this.publish();
     return clonedRecord;
+};
+
+var put = function (data) {
+    var _id = data._id;
+    var recordIndex = _.findIndex(this.data, { _id: _id });
+    var clonedRecord = _.cloneDeep(this.data[recordIndex]);
+    this.data.splice(recordIndex, 1, data);
+    this.pendingUpdateId = _id;
+    this.publish();
+    return clonedRecord;
+};
+
+var updaters$1 = {
+    patch: patch,
+    put: put
 };
 
 var reverter = function (record) {
@@ -143,7 +158,7 @@ var updaterGenerator = function (method) {
     return function (params) {
         var _this = this;
         var data = params.data, url = params.url;
-        var originalRecord = updater.call(this, data);
+        var originalRecord = updaters$1[method].call(this, data);
         url = urlProcessor.call(this, url);
         var promise = this.http[method](url, data).toPromise();
         promise.catch(function () { return reverter.call(_this, originalRecord); });
