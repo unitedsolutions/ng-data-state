@@ -1,1 +1,1 @@
-export default function (_id: any): null | undefined;
+export default function (record: any): null | undefined;

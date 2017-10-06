@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
-export default function (_id) {
+export default function (record) {
+    var _id = record._id;
     if (this.pendingDeleteId === _id) {
         return this.pendingDeleteId = null;
     }

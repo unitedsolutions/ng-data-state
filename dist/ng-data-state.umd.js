@@ -22,7 +22,8 @@ var postSyncer = function (record) {
     }
 };
 
-var deleteSyncer = function (_id) {
+var deleteSyncer = function (record) {
+    var _id = record._id;
     if (this.pendingDeleteId === _id) {
         return this.pendingDeleteId = null;
     }
