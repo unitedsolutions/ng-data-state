@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('lodash'), require('rxjs'), require('socket.io-client'), require('ng-http-client-plus')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'lodash', 'rxjs', 'socket.io-client', 'ng-http-client-plus'], factory) :
-	(factory((global.ngDataState = {}),global.ng.core,global._,global.Rx,global.io,global.ngHttpClientPlus));
-}(this, (function (exports,core,_,rxjs,io,ngHttpClientPlus) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('lodash'), require('ng-http-client-plus'), require('rxjs'), require('socket.io-client')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'lodash', 'ng-http-client-plus', 'rxjs', 'socket.io-client'], factory) :
+	(factory((global.ngDataState = {}),global.ng.core,global._,global.ngHttpClientPlus,global.Rx,global.io));
+}(this, (function (exports,core,_,ngHttpClientPlus,rxjs,io) { 'use strict';
 
 io = io && io.hasOwnProperty('default') ? io['default'] : io;
 
@@ -233,7 +233,7 @@ var DataState = /** @class */ (function () {
     ];
     /** @nocollapse */
     DataState.ctorParameters = function () { return [
-        null,
+        { type: ngHttpClientPlus.HttpClientPlus, },
     ]; };
     return DataState;
 }());
