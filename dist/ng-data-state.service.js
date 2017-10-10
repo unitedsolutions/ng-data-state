@@ -1,6 +1,5 @@
 import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
-import { HttpClientPlus } from 'ng-http-client-plus';
 import { DataResource } from './data-resource/data-resource';
 var DataState = /** @class */ (function () {
     function DataState(http) {
@@ -27,7 +26,7 @@ var DataState = /** @class */ (function () {
     ];
     /** @nocollapse */
     DataState.ctorParameters = function () { return [
-        { type: HttpClientPlus, },
+        null,
     ]; };
     return DataState;
 }());
